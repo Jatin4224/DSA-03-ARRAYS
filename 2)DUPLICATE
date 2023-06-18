@@ -14,4 +14,20 @@ soln -int duplicateNumber(int *arr, int size)
         }
     }
     return -1;
+
+//using XOR approach
+
+    int xor1 = 0; // XOR of array elements
+    for (int i = 0; i < size; i++) {
+        xor1 = xor1 ^ arr[i];
+    }
+
+    int xor2 = 0; // XOR of numbers from 0 to N-2
+    for (int i = 0; i <= size - 2; i++) {
+        xor2 = xor2 ^ i;
+    }
+
+    int duplicate = xor1 ^ xor2;
+    return duplicate;
+}
  }
