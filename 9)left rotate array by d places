@@ -1,0 +1,75 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+void LeftRotate(int arr[],int n,int d){
+    d = d%n;//we must sure that d is less than n so we know that % always gives ans in between 0 to n-1
+   
+   //now we store values in temp for example 
+   // array - [1,2,3,4,5,7] d=3-> so we will store temp = [1,2,3]
+    int temp[d];
+    for(int i = 0; i < d; i++){
+        temp[i] = arr[i];
+    }
+
+    //shifting the array
+    for (int i = d; i < n; i++) {
+        arr[i-d] = arr[i];
+ 
+ //       
+ ///place back temp in the array
+        } for(int i = n - d; i < n; i++){
+            arr[i] = temp[i - (n-d)];
+        }
+         {
+
+        }
+    }
+
+int main() {
+    //Write your code here
+     int n ;
+     cin>>n;
+     int arr[n];
+     for(int i = 0;i<n;i++){
+         cin>> arr[i];
+
+     }
+     int d ;
+     cin >> d;
+     LeftRotate(arr, n, d);
+     for(int i = 0; i<n;i++){
+         cout << arr[i] << " ";
+     }
+    return 0;
+}
+
+
+
+/////////////optimal solution///////////
+
+
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+void LeftRotate(int arr[], int n, int d) {
+  reverse(arr, arr + d);
+  reverse(arr + d, arr + n);
+  reverse(arr, arr + n);
+}
+int main() {
+    //Write your code here
+     int n ;
+     cin>>n;
+     int arr[n];
+     for(int i = 0;i<n;i++){
+         cin>> arr[i];
+
+     }
+     int d ;
+     cin >> d;
+     LeftRotate(arr, n, d);
+     for(int i = 0; i<n;i++){
+         cout << arr[i] << " ";
+     }
+    return 0;
+}
