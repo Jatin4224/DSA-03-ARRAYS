@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> // This is a common way to include a set of standard C++ headers.
+
+using namespace std; // This line declares that you're using the standard namespace, so you can use standard C++ features without explicitly writing "std::" each time.
+
+string read(int n, vector<int> book, int target) // Defining a function named "read" that takes three arguments: an integer "n", a vector of integers "book", and an integer "target". The function returns a string.
+{
+    sort(book.begin(), book.end()); // Sorts the elements in the 'book' vector in ascending order.
+
+    int left = 0, right = n - 1; // Declares and initializes two integers 'left' and 'right'. 'left' is set to 0, and 'right' is set to 'n - 1', which are the indices for the leftmost and rightmost elements of the sorted 'book' vector.
+
+    while (left < right) { // Initiates a while loop that continues as long as 'left' is less than 'right'.
+        int sum = book[left] + book[right]; // Calculates the sum of the elements at indices 'left' and 'right' in the sorted 'book' vector.
+
+        if (sum == target) { // Checks if the calculated 'sum' is equal to the 'target'.
+            return "YES"; // If the 'sum' matches the 'target', returns "YES" to indicate that a pair with the desired sum was found.
+        }
+        else if (sum < target) {
+            left++; // If the 'sum' is less than the 'target', increments the 'left' index to consider a larger value from the 'book' vector.
+        }
+        else {
+            right--; // If the 'sum' is greater than the 'target', decrements the 'right' index to consider a smaller value from the 'book' vector.
+        }
+    }
+
+    return "NO"; // If the loop completes without finding a pair that sums up to the 'target', returns "NO" to indicate that no such pair exists.
+}
